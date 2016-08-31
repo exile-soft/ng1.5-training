@@ -1,11 +1,19 @@
-<nav class="navigation">
+<nav class="navbar navbar-default">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" ui-sref="home">{{$ctrl.name}}</a>
+    </div>
 
-  <div class="logo">
-    <h1><a ui-sref="home">{{$ctrl.name}}</a></h1>
-  </div>
-  
-  <div class="nav-links">
-    <span><a ui-sref="about">about</a></span>
+    <div>
+      <ul class="nav navbar-nav">
+        <li ng-repeat="menu in $ctrl.menuItems">
+        <a ui-sref="{{menu.component}}">{{menu.name}}
+            <span class="sr-only">(current)</span>
+        </a>
+    </li>
+      </ul>
+    </div>
+
   </div>
 
 </nav>
