@@ -4,10 +4,9 @@ class HomeController {
 
 	constructor($ngRedux) { // $ngRedux		
 		"ngInject";
-
-		this.user = {};
-
 		this.$ngRedux = $ngRedux;
+
+		this.user = {};		
 		this.name = 'home';
 		// this.unsubscribe = this.$ngRedux.connect(this.mapStateToThis)(this);
 		this.unsubscribe = this.$ngRedux.connect(this.mapStateToThis, UserActions)(this); // this functions will be shadowed by the user actions

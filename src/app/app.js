@@ -1,4 +1,6 @@
 import angular from 'angular';
+import ngMaterial from 'angular-material';
+import 'angular-material/angular-material.css';
 import uiRouter from 'angular-ui-router';
 import ngRedux from 'ng-redux';
 import { RootReducer } from './reducers';
@@ -10,6 +12,7 @@ import 'normalize.css';
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 angular.module('app', [
+    ngMaterial,
     uiRouter,
     ngRedux,
     Common,

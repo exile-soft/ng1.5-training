@@ -8,11 +8,10 @@ export function UserReducer (state = initialState, action) {
 
         case 'CHANGE_NAME': {
         	// debugger;
-        	state = {...state, name: action.payload}; // spread is not working? use stage to babel plugin
-            break;
+        	state = {...state, name: action.payload}; // spread is not working? use stage-2 preset
         }
 
     }
-	debugger;
+	
 	return state;
 }
