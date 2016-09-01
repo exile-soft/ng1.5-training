@@ -6,6 +6,7 @@ export default class MenuService {
   }
 
   browse() {
+    // debugger;
   	return this.$http({
   		method: 'GET',
   		url: 'http://localhost:3004/main-menu-items'

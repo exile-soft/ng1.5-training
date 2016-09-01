@@ -7,7 +7,7 @@ class NavigationController {
   	
     this.name = 'E X I L E Trainings';
 
-    this.menuItems = [];
+    //this.menuItems = [];
 
   }
 
@@ -17,9 +17,7 @@ class NavigationController {
   };
 
   setMenuItems() {
-    this.service.browse().then((response) => {
-      this.menuItems = response.data;
-    });    
+    this.service.browse().then(response => this.menuItems = response.data);    
   }
 
 }

@@ -1,22 +1,16 @@
 {
 
   "main-menu-items": [
+    
     {
       "id": 1,
       "menuItemId": "MM001",
-      "component": "home",
-      "title": "Home",
-      "tooltip": "Home Page",
-      "description": "home menu item"
-    },
-    {
-      "id": 2,
-      "menuItemId": "MM002",
       "component": "about",
       "title": "About",
       "tooltip": "About Page",
       "description": "about menu item"
     }
+    
   ],
     
 
