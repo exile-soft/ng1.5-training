@@ -2,9 +2,10 @@ import UserActions from '../../actions/user.actions';
 
 class HomeController {
 
-	constructor($ngRedux) { // $ngRedux		
+	constructor($ngRedux, trainningRepository) { // $ngRedux		
 		"ngInject";
 		this.$ngRedux = $ngRedux;
+		this.trainningRepository = trainningRepository;
 
 		this.user = {};		
 		this.name = 'home';
@@ -15,6 +16,9 @@ class HomeController {
 	$onDestroy(){
 		this.unsubscribe();
 	}
+	$onInit() {
+		this.getAllTrainings();
+	}
 
 	mapStateToThis(state) {
 		return {
@@ -24,6 +28,10 @@ class HomeController {
 
 	changeName(name) {
 		this.changeUserName(name);
+	}
+
+	getAllTrainings() {
+		this.trainningRepository.browse().then(response=> this.allTrainings = response.data);
 	}
 
 }

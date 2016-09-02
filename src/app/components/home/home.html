@@ -1,13 +1,29 @@
-<div>
-	<button ng-click="vm.changeName('sam')">{{vm.name}}</button>
-	<md-button class="md-raised">Hello There!</md-button>
-</div>
+<div flex-gt-sm="90" flex-gt-md="80">
+	<h2 class="md-title inset">Latest Trainings</h2>
+	<md-card>
+		<md-list>
+		
+		  <md-list-item class="md-3-line" ng-repeat="training in vm.allTrainings"> <!-- | filter:search -->
+		    <md-icon class="md-avatar" hide-sm md-svg-icon="avatars:{{training.icon}}"></md-icon>
+		    <div class="md-list-item-text">
+		      <h3>{{training.title}}</h3>
+		      <h4>
+		      	<span ng-repeat="trainer in training.trainers">{{trainer.firstName}} {{trainer.lastName}}{{$last ? '&nbsp;' : ', '}}</span>
+		      </h4>
+		      <p>{{training.description}}</p>
+		    </div>
+		    <md-divider md-inset hide-sm ng-if="!$last"></md-divider>
+		    <md-divider hide-gt-sm ng-if="!$last"></md-divider>
+		  </md-list-item>
 
-<div>
-	
-	<md-input-container>
-		<label>Email</label>
-		<input ng-model="user.email" type="email">
-	</md-input-container>
+		  <md-divider></md-divider>
 
-</div>
+		  <md-list-item>
+		    <md-button class="md-primary">
+		      <md-icon md-svg-icon="navigation:ic_arrow_forward_24px" aria-label="Forward"></md-icon>
+		      <span>More</span>
+		    </md-button>
+		  </md-list-item>
+		</md-list>
+	</md-card>
+</div>	

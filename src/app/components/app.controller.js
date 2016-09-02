@@ -4,7 +4,7 @@ class AppController {
 
   constructor($mdSidenav) {
   	"ngInject";
-  	// debugger;
+
   	this.$mdSidenav = $mdSidenav;
   	this.name = 'app';
   }

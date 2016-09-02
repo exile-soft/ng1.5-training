@@ -1,0 +1,26 @@
+[ng-cloak] {
+  display: none;
+}
+
+html, body {
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+}
+
+#content {
+  overflow: hidden;
+  padding-left: 40px;
+  padding-top: 5px;
+}
+
+.md-avatar svg {
+  border-radius: 50%;
+}
+
+.md-3-line {
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
+}
