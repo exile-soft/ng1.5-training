@@ -6,4 +6,10 @@ function changeUserName(name){
     }
 }
 
-export default { changeUserName };  
+function testUser($ngRedux, name){
+	$ngRedux.dispatch({type: 'TEST_USER', payload: name});
+}
+
+testUser.$inject = ['$ngRedux'];
+
+export default { changeUserName, testUser };  

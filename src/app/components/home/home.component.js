@@ -3,7 +3,7 @@ import controller from './home.controller';
 
 let homeComponent = {
   restrict: 'E',
-  //bindings: {},
+  bindings: {},
   template,
   controller,
   controllerAs: 'vm'

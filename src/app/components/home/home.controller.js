@@ -1,4 +1,5 @@
 import UserActions from '../../actions/user.actions';
+import TrainingActions from '../../actions/training.actions';
 
 class HomeController {
 
@@ -11,10 +12,16 @@ class HomeController {
 		this.name = 'home';
 		// this.unsubscribe = this.$ngRedux.connect(this.mapStateToThis)(this);
 		this.unsubscribe = this.$ngRedux.connect(this.mapStateToThis, UserActions)(this); // this functions will be shadowed by the user actions
+		// this.unsubscribe = this.$ngRedux.connect(this.mapStateToThis, TrainingActions)(this);
+
+		this.$ngRedux.subscribe(() => {
+		    let state = $ngRedux.getState();
+		})
+
 	}
 
 	$onDestroy(){
-		this.unsubscribe();
+		this.unsubscribe(); // important!
 	}
 	$onInit() {
 		this.getAllTrainings();
@@ -22,12 +29,13 @@ class HomeController {
 
 	mapStateToThis(state) {
 		return {
-			user: state.users
+			user: state.user
 		};
 	}
 
 	changeName(name) {
-		this.changeUserName(name);
+		//this.changeUserName(name);
+		this.testUser(this.$ngRedux, name);
 	}
 
 	getAllTrainings() {

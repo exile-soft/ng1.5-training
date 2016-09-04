@@ -3,6 +3,8 @@ import ngMaterial from 'angular-material';
 import 'angular-material/angular-material.css';
 import uiRouter from 'angular-ui-router';
 import ngRedux from 'ng-redux';
+import thunk from 'redux-thunk';
+import createLogger from 'redux-logger';
 import { RootReducer } from './reducers';
 import Common from './common/common';
 import Services from './services/services';
@@ -51,7 +53,7 @@ angular.module('app', [
 
     $locationProvider.html5Mode(true).hashPrefix('!');
 
-    $ngReduxProvider.createStoreWith(RootReducer);
+    $ngReduxProvider.createStoreWith(RootReducer, [thunk, createLogger()]);
   })
 
   .component('app', AppComponent);
