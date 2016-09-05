@@ -7,29 +7,34 @@ class HomeController {
 		"ngInject";
 		this.$ngRedux = $ngRedux;
 		this.trainningRepository = trainningRepository;
+		this.trainingActions = new TrainingActions($ngRedux, trainningRepository);
 
 		this.user = {};		
 		this.name = 'home';
 		// this.unsubscribe = this.$ngRedux.connect(this.mapStateToThis)(this);
-		this.unsubscribe = this.$ngRedux.connect(this.mapStateToThis, UserActions)(this); // this functions will be shadowed by the user actions
-		// this.unsubscribe = this.$ngRedux.connect(this.mapStateToThis, TrainingActions)(this);
+		// this.unsubscribe = this.$ngRedux.connect(this.mapStateToThis, UserActions)(this); // this functions will be shadowed by the user actions
+		this.unsubscribe = this.$ngRedux.connect(this.mapStateToThis)(this);
 
+		/*
 		this.$ngRedux.subscribe(() => {
 		    let state = $ngRedux.getState();
 		})
+		*/
 
 	}
 
 	$onDestroy(){
 		this.unsubscribe(); // important!
 	}
-	$onInit() {
-		this.getAllTrainings();
+
+	$onInit() {		
+		// this.getAllTrainings();
+		this.trainingActions.getAllTrainings();
 	}
 
 	mapStateToThis(state) {
 		return {
-			user: state.user
+			training: state.training
 		};
 	}
 
@@ -38,9 +43,11 @@ class HomeController {
 		this.testUser(this.$ngRedux, name);
 	}
 
+	/*
 	getAllTrainings() {
 		this.trainningRepository.browse().then(response=> this.allTrainings = response.data);
 	}
+	*/
 
 }
 

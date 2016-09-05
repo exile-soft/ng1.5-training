@@ -1,12 +1,40 @@
 // training.actions.js
 
-function getAllTrainings(trainningRepository){ 
-    return {
-        type: 'GET_ALL_TRAININGS',
-        payload: 'repo'
-    }
+class TrainingActions {
+
+	constructor($ngRedux, trainningRepository) {
+		"ngInject";
+		this.$ngRedux = $ngRedux;
+		this.trainningRepository = trainningRepository;
+	}
+
+	getAllTrainings(){
+		this.$ngRedux.dispatch({type: 'FETCHING_TRAININGS'});
+
+		this.trainningRepository.browse()
+
+		.then((response) => {
+
+			setTimeout(() => {
+				this.$ngRedux.dispatch({
+					type: 'FETCHED_TRAININGS',
+					payload: response.data
+				});
+			}, 2000);		
+
+		}, (response) => {
+
+			this.$ngRedux.dispatch({
+				type: 'FETCHING_ERROR',
+				payload: response.error
+			});
+
+		});
+
+	}
+
 }
 
-getAllTrainings.$inject = ['trainningRepository'];
+// TrainingActions.$inject = ['$ngRedux', 'trainningRepository']; 
 
-export default { getAllTrainings };  
+export default TrainingActions;

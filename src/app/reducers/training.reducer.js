@@ -1,18 +1,27 @@
 import { createStore } from 'redux';
 
-const initialState = {};
+const initialState = {
+  fetching: false,
+  fetched: false,
+  trainings: [],
+  error: null
+};
 
 export function TrainingReducer (state = initialState, action) {
 
-	if (!action || !action.type) {
-   		return state;
-  	}
-
 	switch(action.type) {
 
-        case 'GET_ALL_TRAININGS': {
-        	// debugger;
-        	state = {...state, name: action.payload}; // spread is not working? use stage-2 preset
+        case 'FETCHING_TRAININGS': {
+        	state = {...state, fetching: true}; // spread is not working? use stage-2 preset
+          break;
+        }
+        case 'FETCHING_ERROR': {
+          state = {...state, fetching: false, fetched: true, error: action.payload};
+          break;
+        }
+        case 'FETCHED_TRAININGS': {
+          state = {...state, fetching: false, fetched: true, trainings: action.payload};
+          break;
         }
 
     }

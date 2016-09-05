@@ -2,8 +2,12 @@
 	<h2 class="md-title inset">Latest Trainings</h2>
 	<md-card>
 		<md-list>
+
+			<md-list-item ng-if="vm.training.fetching">
+				<h3>Loading...</h3>				
+			</md-list-item>
 		
-		  <md-list-item class="md-3-line" ng-repeat="training in vm.allTrainings"> <!-- | filter:search -->
+		  <md-list-item class="md-3-line" ng-repeat="training in vm.training.trainings" ng-if="vm.training.fetched"> <!-- | filter:search -->
 		    <md-icon class="md-avatar" hide-sm md-svg-icon="avatars:{{training.icon}}"></md-icon>
 		    <div class="md-list-item-text">
 		      <h3>{{training.title}}</h3>
